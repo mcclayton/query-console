@@ -1,0 +1,2 @@
+{"query":"select * from TABLE WHERE id=1","timestamp":1534894179,"service":"Procore"}
+{"query":"select * from TABLE WHERE id=1","timestamp":1534894187,"service":"Developer Portal"}
