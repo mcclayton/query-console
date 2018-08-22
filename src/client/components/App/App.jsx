@@ -1,5 +1,7 @@
 import { h, Component } from 'preact';
-import LogRow from '../LogRow';
+import ServiceTabViewer from '../ServiceTabViewer';
+import Header from '../Header';
+import logo from '../../assets/logo.png';
 import './styles.scss';
 
 export default class App extends Component {
@@ -32,15 +34,14 @@ export default class App extends Component {
     const { logs, error, loading } = this.props;
     return (
       <div className="app">
-        { error && (<div>{error}</div>) }
-        <button onClick={this.clearLogs}>Clear Logs</button>
-        {logs.map((log) => (
-          <LogRow
-            service={log.service}
-            timestamp={log.timestamp}
-            query={JSON.stringify(log.query)}
-          />
-        ))}
+        <div className="sidebar">
+          Sessions
+        </div>
+        <div className="main">
+          <Header onClearLogs={this.clearLogs} />
+          { error && (<div>{error}</div>) }
+          <ServiceTabViewer logs={logs} />
+        </div>
       </div>
     );
   }

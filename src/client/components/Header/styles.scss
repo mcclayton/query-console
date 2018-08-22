@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  height: 4rem;
+  width: 100%;
+  border-bottom: 1px solid #DBDBDB;
+
+  .header__container {
+    padding: 0 1rem;
+    align-items: center;
+    display: flex;
+  }
+}

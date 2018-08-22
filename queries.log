@@ -1,4 +1,0 @@
-{"query":"  LoginInformation Load (0.3ms)  SELECT  \"login_informations\".* FROM \"login_informations\" WHERE \"login_informations\".\"id\" = $1  ORDER BY \"login_informations\".\"id\" ASC LIMIT 1  [[\"id\", 10]]","timestamp":1534897733,"service":"Procore"}
-{"query":"  Contact Load (0.7ms)  SELECT \"contacts\".* FROM \"contacts\" WHERE \"contacts\".\"deleted_at\" IS NULL AND \"contacts\".\"login_information_id\" IN (10)","timestamp":1534897733,"service":"Procore"}
-{"query":"  Vendor Load (0.6ms)  SELECT \"contacts\".* FROM \"contacts\" WHERE \"contacts\".\"deleted_at\" IS NULL AND \"contacts\".\"type\" IN ('Vendor') AND \"contacts\".\"id\" IN (14)","timestamp":1534897733,"service":"Procore"}
-{"query":"  Company Load (0.8ms)  SELECT \"companies\".* FROM \"companies\" WHERE \"companies\".\"deleted_at\" IS NULL AND \"companies\".\"id\" IN (2, 7, 1)","timestamp":1534897733,"service":"Procore"}

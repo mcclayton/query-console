@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { withStateHandlers } from 'recompose';
-import API from '../..//api';
+import API from '../../api';
 
 const api = new API('http://localhost:3006');
 
