@@ -3,7 +3,7 @@ const fs = require("fs");
 const LOG_FILE_PATH = './queries.log';
 
 function appendToLog(data) {
-  const stream = fs.createWriteStream(LOG_FILE_PATH, { flags: 'a' });
+  const stream = fs.createWriteStream(LOG_FILE_PATH, { flags: 'a+' });
   stream.write(data + "\n");
   stream.end();
 }

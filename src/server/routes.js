@@ -18,7 +18,7 @@ const appRouter = (app) => {
 
   app.get("/logs", cors(corsOptionsDelegate), function(req, res) {
     logUtil.getLogData((err) => {
-      throw err;
+      res.json([]);
     }, (data) => {
       var logs = JSON.parse(data);
       res.json(logs);
