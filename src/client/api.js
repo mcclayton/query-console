@@ -16,6 +16,13 @@ const getHeaders = (headers = {}) => (
 
 
 const api = (logServerUrl) => ({
+  fetchServices() {
+    return axios.request({
+      url: `${logServerUrl}/services`,
+      method: 'get',
+    });
+  },
+
   fetchLogs() {
     return axios.request({
       url: `${logServerUrl}/logs`,

@@ -1,5 +1,6 @@
 const cors = require("cors");
 const logUtil = require("./logUtil");
+const configUtil = require("./configUtil");
 
 const corsOptionsDelegate = (req, callback) => {
   const whitelist = ['http://localhost:3005'];
@@ -15,6 +16,17 @@ const corsOptionsDelegate = (req, callback) => {
 
 const appRouter = (app) => {
   app.options('*', cors());
+
+  app.get("/services", cors(corsOptionsDelegate), function(req, res) {
+    let config;
+    try {
+      config = configUtil.getConfig();
+      const serviceNames = config.query_trackers.map(qt => qt.service);
+      res.json(serviceNames);
+    } catch(err) {
+      res.json([]);
+    }
+  });
 
   app.get("/logs", cors(corsOptionsDelegate), function(req, res) {
     logUtil.getLogData((err) => {

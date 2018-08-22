@@ -9,6 +9,7 @@ export default class App extends Component {
     this.fetchLogs = this.fetchLogs.bind(this);
     this.clearLogs = this.clearLogs.bind(this);
     this.interval = setInterval(this.fetchLogs, 1000);
+    this.fetchServices();
     this.fetchLogs();
   }
 
@@ -23,6 +24,13 @@ export default class App extends Component {
     );
   }
 
+  fetchServices() {
+    this.props.fetchServices(
+      this.props.onError,
+      this.props.fetchServicesSuccess,
+    );
+  }
+
   clearLogs() {
     this.props.clearLogs(
       this.props.onError,
@@ -31,7 +39,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { logs, error, loading } = this.props;
+    const { logs, error, loading, services } = this.props;
     return (
       <div className="app">
         <div className="sidebar">
@@ -40,7 +48,7 @@ export default class App extends Component {
         <div className="main">
           <Header onClearLogs={this.clearLogs} />
           { error && (<div>{error}</div>) }
-          <ServiceTabViewer logs={logs} />
+          <ServiceTabViewer logs={logs} services={services} />
         </div>
       </div>
     );
