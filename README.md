@@ -1,7 +1,7 @@
 # query-console
 A console for tracking and inspecting the queries being made by applications via tailing and parsing log files.
 
-![Screenshot](Screenshot.png)
+![Screenshot](https://github.com/mcclayton/query-console/raw/master/Screenshot.png)
 
 ## Getting Started
 + Install query-console globally:
