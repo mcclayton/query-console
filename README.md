@@ -37,5 +37,8 @@ npm install -g query-console
 
 + Then start query-console with:
 ```
-query-console
+query-console -p 3000
 ```
+Now open up your browser to localhost:<PORT> to view Query Console :rocket:
+
+_Note: This will start the Client Server on port 3000, and the API Server on the next port (i.e. 3001)_

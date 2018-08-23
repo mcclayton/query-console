@@ -8,11 +8,34 @@ echo "    |__|           |___|                                "
 
 echo "Starting Query Console..."
 
-# Run the API Server and Client Server in parallel processes
-npm run start:client & pid=$!
-PID_LIST+=" $pid";
+POSITIONAL=()
+while [[ $# -gt 0 ]]
+do
+key="$1"
 
-npm run start:server & pid=$!
+case $key in
+    -p|--port)
+    CLIENT_PORT="$2"
+    shift # past argument
+    shift # past value
+    ;;
+    *)    # unknown option
+    POSITIONAL+=("$1") # save it in an array for later
+    shift # past argument
+    ;;
+esac
+done
+set -- "${POSITIONAL[@]}" # restore positional parameters
+
+
+
+# Run the API Server and Client Server in parallel processes
+
+# Start the API server on the port above the client
+npm run start:server -- -p $(( ${CLIENT_PORT:-3005} + 1)) & pid=$!
+PID_LIST+=" $pid";
+# Start the client server on the port specified
+npm run start:client -- -l ${CLIENT_PORT:-3005} & pid=$!
 PID_LIST+=" $pid";
 
 trap "kill $PID_LIST" SIGINT

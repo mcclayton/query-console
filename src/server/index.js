@@ -5,6 +5,7 @@ const routes = require("./routes.js");
 const configUtil = require("./configUtil");
 const QueryTracker = require("./queryTracker");
 const app = express();
+const argv = require('minimist')(process.argv.slice(2));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -19,11 +20,11 @@ try {
   throw new Error('Error occurred when retrieving config.', err);
 }
 
-// Now start the server using the config options
-const port = config.server_port || 3006;
+// Now start the server
+const port = argv['p'] || 3006;
 
 const server = app.listen(port, function() {
-  console.log("Server running on port:", server.address().port);
+  console.log("API Server running...");
 });
 
 const trackers = config.query_trackers;
