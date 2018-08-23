@@ -1,4 +1,5 @@
 import App from './App';
 import StateContainer from './StateContainer';
+import { withTabState } from './TabState';
 
-export default StateContainer(App);
+export default StateContainer(withTabState(App));

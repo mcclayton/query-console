@@ -1,15 +1,6 @@
 .app {
   display: flex;
 
-  .sidebar {
-    flex-shrink: 0;
-    border-right: 1px solid #DBDBDB;
-    background-color: white;
-    height: 100%;
-    width: 15rem;
-    overflow: auto;
-  }
-
   .main {
     height: 100%;
     width: 100%;

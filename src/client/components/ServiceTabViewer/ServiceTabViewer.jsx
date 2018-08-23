@@ -12,19 +12,14 @@ export default class LogRow extends Component {
   }
 
   render() {
-    const { logs, currTab, services } = this.props;
-    const filteredLogs = logs.filter(l => l.service === (currTab || 'Procore'));
+    const { logs, services, currTab } = this.props;
+
+    const currService = services.indexOf(currTab) !== -1 ? currTab : services[0];
+    const filteredLogs = logs.filter(l => l.service === currService);
 
     return (
       <div className="tab-viewer">
-        {
-          services.map((s) => (
-            <div style={{ border: '1px solid gray', padding: '1rem' }}>
-              {s}
-            </div>
-          ))
-        }
-        <LogList logs={logs} service={"DUMMY SERVICE"} />
+        <LogList logs={filteredLogs} service={currService} />
       </div>
     );
   }

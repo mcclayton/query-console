@@ -1,6 +1,7 @@
 import { h, Component } from 'preact';
 import ServiceTabViewer from '../ServiceTabViewer';
 import Header from '../Header';
+import Sidebar from '../Sidebar';
 import logo from '../../assets/logo.png';
 import './styles.scss';
 
@@ -39,16 +40,15 @@ export default class App extends Component {
   }
 
   render() {
-    const { logs, error, loading, services } = this.props;
+    const { logs, error, loading, services, currTab, setTab } = this.props;
+
     return (
       <div className="app">
-        <div className="sidebar">
-          Sessions
-        </div>
+        <Sidebar logs={logs} services={services} currTab={currTab} setTab={setTab} />
         <div className="main">
           <Header onClearLogs={this.clearLogs} />
           { error && (<div>{error}</div>) }
-          <ServiceTabViewer logs={logs} services={services} />
+          <ServiceTabViewer logs={logs} services={services} currTab={currTab} />
         </div>
       </div>
     );
