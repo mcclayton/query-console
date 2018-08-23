@@ -1,13 +1,19 @@
 # query-console
 A console for tracking and inspecting the queries being made by applications via tailing and parsing log files.
 
+![Screenshot](Screenshot.png)
+
 ## Getting Started
 + Install query-console globally:
-```
+```bash
 npm install -g query-console
 ```
 
-+ Create a config JSON file:
++ Create a config JSON file specifying your query tracker information:
+`service`: The name of the service being monitored.
+`log_path`: The absolute path of the log file to tail and parse. (Note: Tilde path expansion is not supported)
+`regexes`: The regular expression to use for determining whether or not a log line is a query.
+
 ```json
 {
   "query_trackers": [
@@ -30,15 +36,20 @@ npm install -g query-console
           "ignore_case": false
         }
       ]
-    },
+    }
   ]
 }
 ```
 
 + Then start query-console with:
+```bash
+query-console -c /Desktop/config.json
 ```
-query-console -p 3000
-```
-Now open up your browser to localhost:3000 to view Query Console :rocket:
+`-c` specifies the path to the config file (Note: Tilde path expansion is not supported)
 
-_Note: This will start the Client Server on port 3000, and the API Server on the next port (i.e. 3001)_
+Now open up your browser to localhost:3005 to view Query Console :rocket:
+
+You can also specify a different port using the `-p` flag.
+`query-console -c /Desktop/config.json -p 3000`
+
+_Note: This would start the Client Server on port 3000, and the API Server on the next port (i.e. 3001)_
