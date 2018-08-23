@@ -45,7 +45,7 @@ npm install -g query-console
 ```bash
 query-console -c /Desktop/config.json
 ```
-`-c` specifies the path to the config file (Note: Tilde path expansion is not supported)
+`-c` specifies the absolute path to the config file (Note: Tilde path expansion is not supported)
 
 Now open up your browser to localhost:3005 to view Query Console :rocket:
 
