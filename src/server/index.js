@@ -17,11 +17,12 @@ let config;
 try {
   config = configUtil.getConfig();
 } catch(err) {
-  throw new Error('Error occurred when retrieving config.', err);
+  console.error(err.stack);
+  process.exit(1);
 }
 
 // Now start the server
-const port = argv['p'] || 3006;
+const port = argv['p'] || argv['port'] || 3006;
 
 const server = app.listen(port, function() {
   console.log("API Server running...");

@@ -1,8 +1,11 @@
 const fs = require("fs");
-const config = require('../../config.json');
-//const CONFIG_PATH = '../../config.json';
 
 function getConfig(errorCb, successCb) {
+  const configPath = process.env.CONFIG_PATH;
+  if (!fs.existsSync(configPath)) {
+    throw new Error(`Cannot locate config file at ${configPath}`);
+  }
+  const config = JSON.parse(fs.readFileSync(configPath, 'utf8'));
   validateConfig(config);
   return config;
 }

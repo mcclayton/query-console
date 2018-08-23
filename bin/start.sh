@@ -19,6 +19,11 @@ case $key in
     shift # past argument
     shift # past value
     ;;
+    -c|--config)
+    CONFIG_PATH="$2"
+    shift # past argument
+    shift # past value
+    ;;
     *)    # unknown option
     POSITIONAL+=("$1") # save it in an array for later
     shift # past argument
@@ -27,20 +32,26 @@ esac
 done
 set -- "${POSITIONAL[@]}" # restore positional parameters
 
+if [ -z "$CONFIG_PATH" ]
+then
+  echo
+  echo "No config path present. Please use the -c flag to specify the path to the JSON config file."
+  echo
+  pwd
+else
+  # Run the API Server and Client Server in parallel processes
 
+  # Start the API server on the port above the client
+  CONFIG_PATH="$CONFIG_PATH" npm run start:server -- -p $(( ${CLIENT_PORT:-3005} + 1)) & pid=$!
+  PID_LIST+=" $pid";
+  # Start the client server on the port specified
+  npm run start:client -- -l ${CLIENT_PORT:-3005} & pid=$!
+  PID_LIST+=" $pid";
 
-# Run the API Server and Client Server in parallel processes
+  trap "kill $PID_LIST" SIGINT
 
-# Start the API server on the port above the client
-npm run start:server -- -p $(( ${CLIENT_PORT:-3005} + 1)) & pid=$!
-PID_LIST+=" $pid";
-# Start the client server on the port specified
-npm run start:client -- -l ${CLIENT_PORT:-3005} & pid=$!
-PID_LIST+=" $pid";
+  wait $PID_LIST
 
-trap "kill $PID_LIST" SIGINT
-
-wait $PID_LIST
-
-echo
-echo "Query Console Exited.";
+  echo
+  echo "Query Console Exited.";
+fi
