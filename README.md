@@ -2,24 +2,40 @@
 A console for tracking and inspecting the queries being made by applications by tailing and parsing log files.
 
 ## Getting Started
-+ Install the dependencies with:
++ Install query-console globally:
 ```
-yarn install
-```
-
-+ Then start both the API server and the Client server with:
-```
-yarn start
+npm install -g query-console
 ```
 
-## API Server
-Start the API server separately with:
-```
-yarn start:server
++ Create a config JSON file:
+```json
+{
+  "query_trackers": [
+    {
+      "service": "Application One",
+      "log_path": "/Desktop/app-one/log/development.log",
+      "regexes": [
+        {
+          "expression": ".*(select|create|update|delete|insert)\\b",
+          "ignore_case": true
+        }
+      ]
+    },
+    {
+      "service": "Application Two",
+      "log_path": "/Desktop/app-two/log/development.log",
+      "regexes": [
+        {
+          "expression": ".*(FROM|WHERE)\\b",
+          "ignore_case": false
+        }
+      ]
+    },
+  ]
+}
 ```
 
-## Client Server
-Start the Client server separately with:
++ Then start query-console with:
 ```
-yarn start:client
+query-console
 ```

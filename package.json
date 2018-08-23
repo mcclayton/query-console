@@ -1,5 +1,5 @@
 {
-  "name": "rails-query-console",
+  "name": "query-console",
   "version": "0.1.0",
   "description": "A console for tracking and inspecting the queries being made by Rails applications.",
   "main": "src/index.js",
@@ -10,6 +10,7 @@
     "test": "test"
   },
   "author": "Michael Clayton",
+  "preferGlobal": true,
   "license": "MIT",
   "alias": {
     "react": "preact-compat",
@@ -31,5 +32,8 @@
   "devDependencies": {
     "babel-preset-preact": "^1.1.0",
     "parcel-bundler": "^1.9.7"
+  },
+  "bin": {
+    "query-console": "./bin/start.sh"
   }
 }
