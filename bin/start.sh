@@ -7,4 +7,17 @@ echo " |__  _|___|___|_| |_  |  |_____|___|_|_|___|___|_|___| "
 echo "    |__|           |___|                                "
 
 echo "Starting Query Console..."
-npm run start
+
+# Run the API Server and Client Server in parallel processes
+npm run start:client & pid=$!
+PID_LIST+=" $pid";
+
+npm run start:server & pid=$!
+PID_LIST+=" $pid";
+
+trap "kill $PID_LIST" SIGINT
+
+wait $PID_LIST
+
+echo
+echo "Query Console Exited.";

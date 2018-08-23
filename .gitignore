@@ -8,3 +8,4 @@ queries.log
 .cache/
 
 config.json
+package-lock.json
