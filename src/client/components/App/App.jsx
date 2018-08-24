@@ -19,24 +19,18 @@ export default class App extends Component {
   }
 
   fetchLogs() {
-    this.props.fetchLogs(
-      this.props.onError,
-      this.props.fetchLogsSuccess,
-    );
+    this.props.fetchLogs(this.props.onError, this.props.fetchLogsSuccess);
   }
 
   fetchServices() {
     this.props.fetchServices(
       this.props.onError,
-      this.props.fetchServicesSuccess,
+      this.props.fetchServicesSuccess
     );
   }
 
   clearLogs() {
-    this.props.clearLogs(
-      this.props.onError,
-      this.props.clearLogsSuccess,
-    );
+    this.props.clearLogs(this.props.onError, this.props.clearLogsSuccess);
   }
 
   render() {
@@ -44,10 +38,15 @@ export default class App extends Component {
 
     return (
       <div className="app">
-        <Sidebar logs={logs} services={services} currTab={currTab} setTab={setTab} />
+        <Sidebar
+          logs={logs}
+          services={services}
+          currTab={currTab}
+          setTab={setTab}
+        />
         <div className="main">
           <Header onClearLogs={this.clearLogs} />
-          { error && (<div>{error}</div>) }
+          {error && <div>{error}</div>}
           <ServiceTabViewer logs={logs} services={services} currTab={currTab} />
         </div>
       </div>

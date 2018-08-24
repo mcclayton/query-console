@@ -5,10 +5,6 @@ export default class Badge extends Component {
   render() {
     const { children } = this.props;
 
-    return (
-      <div className="badge">
-        {children}
-      </div>
-    );
+    return <div className="badge">{children}</div>;
   }
 }

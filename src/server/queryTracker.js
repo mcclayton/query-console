@@ -2,7 +2,7 @@ const Tail = require('tail').Tail;
 const logUtil = require('./logUtil');
 
 const DEFAULT_QUERY_REGEX = {
-  expression: ".*(select|create|update|delete|insert)\\b",
+  expression: '.*(select|create|update|delete|insert)\\b',
   ignore_case: true
 };
 
@@ -14,7 +14,8 @@ class QueryTracker {
     this.path = path;
     this.tail = new Tail(path);
     this.service = service || 'default';
-    const regexConfigs = (regexes && regexes.length > 0) ? regexes : [DEFAULT_QUERY_REGEX];
+    const regexConfigs =
+      regexes && regexes.length > 0 ? regexes : [DEFAULT_QUERY_REGEX];
     this.regexes = regexConfigs.map((r) => this._getRegex(r));
   }
 
@@ -22,11 +23,13 @@ class QueryTracker {
     const configString = `
       \t• Service: ${this.service}
       \t• Log Path: ${this.path}
-      \t• Query Regexes: ${JSON.stringify(this.regexes.map(r => r.toString()))},
+      \t• Query Regexes: ${JSON.stringify(
+        this.regexes.map((r) => r.toString())
+      )},
     `;
     console.log('→ Query Tracker Started With Config:', configString);
 
-    this.tail.on("line", (data) => {
+    this.tail.on('line', (data) => {
       const cleanedData = data.replace(ESCAPE_CODE_REGEX, '');
       if (this._isQuery(cleanedData)) {
         console.log(`->> QUERY (${this.service}):\n`, cleanedData);
@@ -35,7 +38,7 @@ class QueryTracker {
       }
     });
 
-    this.tail.on("error", function(error) {
+    this.tail.on('error', function(error) {
       console.log('ERROR: ', error);
     });
   }
@@ -45,7 +48,7 @@ class QueryTracker {
   }
 
   _getRegex(regexConfig) {
-    const flags = regexConfig.ignore_case === true ? "gi" : "g";
+    const flags = regexConfig.ignore_case === true ? 'gi' : 'g';
     return new RegExp(regexConfig.expression, flags);
   }
 

@@ -14,8 +14,9 @@ export default class LogRow extends Component {
   render() {
     const { logs, services, currTab } = this.props;
 
-    const currService = services.indexOf(currTab) !== -1 ? currTab : services[0];
-    const filteredLogs = logs.filter(l => l.service === currService);
+    const currService =
+      services.indexOf(currTab) !== -1 ? currTab : services[0];
+    const filteredLogs = logs.filter((l) => l.service === currService);
 
     return (
       <div className="tab-viewer">
@@ -23,4 +24,4 @@ export default class LogRow extends Component {
       </div>
     );
   }
-};
+}

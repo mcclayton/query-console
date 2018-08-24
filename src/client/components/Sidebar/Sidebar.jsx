@@ -14,27 +14,22 @@ export default class Sidebar extends Component {
   render() {
     const { logs, services, currTab, setTab } = this.props;
 
-    const currService = services.indexOf(currTab) !== -1 ? currTab : services[0];
+    const currService =
+      services.indexOf(currTab) !== -1 ? currTab : services[0];
 
     return (
       <div className="sidebar">
-        <div className="sidebar__header">
-          🚀 Services
-        </div>
+        <div className="sidebar__header">🚀 Services</div>
         <div>
-          {
-            services.map((s) => (
-              <div
-                className={cx('service', { 'selected': s === currService })}
-                onClick={() => setTab(s)}
-                >
-                {s}
-                <Badge>
-                  {this._getLogCount(s, logs)}
-                </Badge>
-              </div>
-            ))
-          }
+          {services.map((s) => (
+            <div
+              className={cx('service', { selected: s === currService })}
+              onClick={() => setTab(s)}
+            >
+              {s}
+              <Badge>{this._getLogCount(s, logs)}</Badge>
+            </div>
+          ))}
         </div>
       </div>
     );

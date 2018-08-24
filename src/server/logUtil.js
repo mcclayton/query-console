@@ -1,22 +1,22 @@
-const fs = require("fs");
+const fs = require('fs');
 
 const LOG_FILE_PATH = './queries.log';
 
 function appendToLog(data) {
   const stream = fs.createWriteStream(LOG_FILE_PATH, { flags: 'a+' });
-  stream.write(data + "\n");
+  stream.write(data + '\n');
   stream.end();
 }
 
 function clearLog() {
   const stream = fs.createWriteStream(LOG_FILE_PATH, { flags: 'w' });
   fs.writeFile(LOG_FILE_PATH, '', () => {
-    console.log('Log cleared.')
+    console.log('Log cleared.');
   });
 }
 
 function getLogData(errorCb, successCb) {
-  fs.readFile(LOG_FILE_PATH, "utf8", (err, data) => {
+  fs.readFile(LOG_FILE_PATH, 'utf8', (err, data) => {
     if (err) {
       errorCb(err);
     } else {
@@ -26,7 +26,7 @@ function getLogData(errorCb, successCb) {
         }
         return result;
       }, []);
-      const json = "[" + stringifiedEntries.join(',') + "]";
+      const json = '[' + stringifiedEntries.join(',') + ']';
       successCb(json);
     }
   });
@@ -35,5 +35,5 @@ function getLogData(errorCb, successCb) {
 module.exports = {
   appendToLog: appendToLog,
   clearLog: clearLog,
-  getLogData: getLogData,
+  getLogData: getLogData
 };

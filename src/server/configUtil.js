@@ -1,4 +1,4 @@
-const fs = require("fs");
+const fs = require('fs');
 
 function getConfig(errorCb, successCb) {
   const configPath = process.env.CONFIG_PATH;
@@ -30,7 +30,9 @@ function validateConfig(configObj) {
 
       if (!fs.existsSync(t.log_path)) {
         throw new Error(`
-          Query tracker for service '${t.service}' failed to find log file at path: '${t.log_path}'.
+          Query tracker for service '${
+            t.service
+          }' failed to find log file at path: '${t.log_path}'.
           Please ensure you provide a valid 'log_path' key in the config.
         `);
       }

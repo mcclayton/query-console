@@ -2,7 +2,6 @@
 .AppleDouble
 .LSOverride
 
-node_modules/
 queries.log
 .cache/
 

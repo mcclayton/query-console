@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Set appropriate working directory
+cd "$(npm root -g)/query-console"
+
 echo "  _____                    _____                 _      "
 echo " |     |_ _ ___ ___ _ _   |     |___ ___ ___ ___| |___  "
 echo " |  |  | | | -_|  _| | |  |   --| . |   |_ -| . | | -_| "

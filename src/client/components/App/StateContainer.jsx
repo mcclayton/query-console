@@ -9,7 +9,7 @@ export default withStateHandlers(
     logs: [],
     services: [],
     loading: false,
-    error: null,
+    error: null
   },
   {
     fetchServices: () => (errorCb, successCb) => {

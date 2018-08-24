@@ -1,7 +1,12 @@
-# query-console
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+[Prettier](https://prettier.io/) is run as a pre-commit hook to automatically
+change staged files to adhere to our base code style rules.
+
+# Query Console
 A console for tracking and inspecting the queries being made by applications via tailing and parsing log files.
 
-![Screenshot](Screenshot.png)
+![Screenshot](https://github.com/mcclayton/query-console/raw/master/Screenshot.png)
 
 ## Getting Started
 + Install query-console globally:

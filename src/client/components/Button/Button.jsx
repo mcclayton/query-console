@@ -1,5 +1,5 @@
 import { h, Component } from 'preact';
-import './styles.scss'
+import './styles.scss';
 
 export default class Button extends Component {
   render() {
@@ -9,4 +9,4 @@ export default class Button extends Component {
       </button>
     );
   }
-};
+}

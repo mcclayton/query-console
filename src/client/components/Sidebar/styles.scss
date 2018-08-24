@@ -19,10 +19,9 @@
   }
 
   .service {
-    width: 100%;
     background-color: white;
     border-bottom: 1px solid #DBDBDB;
-    padding: 1rem;
+    padding: 1rem 0;
     display: flex;
 
     .badge {
@@ -32,7 +31,6 @@
 
     &.selected {
       font-weight: bold;
-      border-left: 0.5rem solid #DBDBDB;
       background-color: #f4f0f0;
     }
 
