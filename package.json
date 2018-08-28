@@ -1,6 +1,6 @@
 {
   "name": "query-console",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "A console for tracking and inspecting the queries being made by applications via tailing and parsing log files.",
   "main": "src/index.js",
   "scripts": {
